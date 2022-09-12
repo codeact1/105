@@ -3,13 +3,17 @@
 document.getElementById("userEmail");
 $("#userEmail").val();//getting the value
 
-document.getElementsByTagName("input")[0].style.display="none";
+//document.getElementsByTagName("input")[0].style.display="none";
 
+//hiding all the inputs js
 
 //let inputs=document.getElementsByTagName("input");
 //for(let i=0; i<inputs.length; i++){
- //   inputs[i].style.display="none";
+ //  inputs[i].style.display="none";
 //}
 
-//jquery//
-$("input").hide();
+//hiding inputs with jquery//
+//$("input").hide();
+
+//removing by class name
+//$(".input-container").remove();
