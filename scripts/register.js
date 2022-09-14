@@ -13,6 +13,17 @@ function User(firstName,lastName,email,password,age,gender,address,phone,color,p
   
 }
 
+ function isValid(User){
+    
+      let valid =true;
+      if(User.email =="" || User.password=="" ||User.name==""){
+         valid=false;
+         alert("Please enter required information");
+        }
+        return valid;
+}
+
+
 function register(){
     //getting the values from the inputs
     let txtFirstName = $("#userFirstName").val();
@@ -30,10 +41,32 @@ function register(){
 
     //create the user obj
     let aUser = new User(txtFirstName,txtLastName,txtAge,txtEmail,txtPassword,txtGender,txtAddress,txtAge,txtPhone,selColor,selPayment);
- //display the object in the console
-    console.log(aUser);
+    //display the object in the console
+
+    if(isValid(aUser)){
+    saveUser(aUser);
+    //clear inputs jquery
     $("input").val("");
-      
+     } 
 }
 
-function init(){}
+function init(){
+    $("#btnSave").on("click", register);
+    $("h1").on("click",function(){
+        $("nav").hide();
+    });
+    $(".form-container").hide();
+
+    $("#btnShowForm").on("click",function(){
+        //$(".form-container").show();
+        $(".form-container").slideDown(1000);
+    });
+
+     $("#closeForm").on("click",function(){
+        $(".form-container").slideUp(2000);
+     });
+
+    }
+
+
+window.onload=init;
