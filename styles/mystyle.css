@@ -80,6 +80,8 @@ h2{
     background-color: rgba(16, 17, 16, 0.397);
     
 }
-.btn :hover{
+table, th, td{
+    margin-left: 30vh;
+    border:2px solid;
 
 }
