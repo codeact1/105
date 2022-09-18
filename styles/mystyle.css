@@ -81,7 +81,21 @@ h2{
     
 }
 table, th, td{
-    margin-left: 30vh;
+    margin-left: 20vh;
     border:2px solid;
 
+}
+.input-error{
+    border:1px solid;
+    background-color: crimson;
+}
+.hide{
+    display:none;
+
+}
+#alert-error{
+    background-color: red;
+    font-size: 12px;
+    margin: 1rem 0 0rem auto;
+    width:80%;
 }

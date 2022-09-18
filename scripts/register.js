@@ -18,14 +18,51 @@ function User(firstName,lastName,email,age,password,gender,address,phone,payment
  function isValid(User){
     
       let valid =true;
-      if(User.email =="" || User.password=="" ||User.name==""){
+      $("input").removeClass("input-error");
+      if(User.email ==""){
          valid=false;
-         alert("Please enter required information");
+        $("#userEmail").addClass("input-error");
+         console.log("Please enter required information");
         }
+        if(User.name==""){ 
+            valid=false;
+             $("#userName").addClass("input-error");
+            console.log("Please enter required information"); 
+        }
+        if(User.phone==""){ 
+            valid=false;
+             $("#userPhone").addClass("input-error");
+            console.log("Please enter required information"); 
+        } 
+        if(User.password.legth==0){
+            valid=false;
+            $("#userPassword").addClass("input-error");
+        } 
         return valid;
 }
+function validatePass(){
+    console.log("validating ");
+    let inputPass = $("#userPassword");//getting the input #userPassword
+    let password = inputPass.val();//getting the value
+    if(password.length<6){
+        inputPass.css("background-color","red");
+        console.log("The password is too short");
+        displayError("The password is too short");
+    }else{
+            inputPass.css("background-color","green"); 
+            console.log("The password is correct extension");
+            displayError("The password is correct extension");   
+            hideError();
+    };
+}
 
+function displayError(msg){
+    $("#alert-error").removeClass("hide").text(msg);//shoeing the alert area
+}
 
+function hideError(){
+    $("#alert-error").addClass("hide");//hidding the alert area
+}
 function register(){
     //getting the values from the inputs
     let txtFirstName = $("#userFirstName").val();
@@ -50,10 +87,14 @@ function register(){
     saveUser(aUser);
     //clear inputs jquery
     $("input").val("");
-     } 
+     }else{
+       console.log("Please complet all the fields"); 
+       displayError("Please complet all the fields");
+     }
 }
 
 function init(){
+    //hook event
     $("#btnSave").on("click", register);
     $("h1").on("click",function(){
         $("nav").hide();
@@ -69,7 +110,9 @@ function init(){
         $(".form-container").slideUp(2000);
      });
 
-    }
+     $("#userPassword").keyup(validatePass);
+}
+    
 
 
 window.onload=init;
